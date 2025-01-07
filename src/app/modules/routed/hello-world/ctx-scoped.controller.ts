@@ -1,9 +1,9 @@
-import { controller, RequestContext, SingletonRequestContext } from '@ditsmod/core';
+import { controller, RequestContext } from '@ditsmod/core';
 import { route } from '@ditsmod/routing';
 import { SomeService } from './some.service.js';
 
-@controller({ scope: 'module' })
-export class SingletonController {
+@controller({ scope: 'ctx' })
+export class CtxScopedController {
   constructor(private someService: SomeService) {}
 
   @route('GET', 'hello2')
@@ -13,7 +13,7 @@ export class SingletonController {
   }
 
   @route('POST', 'body2')
-  postHello(ctx: SingletonRequestContext) {
+  postHello(ctx: RequestContext) {
     ctx.sendJson(ctx.body);
   }
 

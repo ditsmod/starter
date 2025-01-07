@@ -38,11 +38,11 @@ describe('Integration tests for HelloWorldController', () => {
     await testAgent.get('/api/throw-error').expect(Status.INTERNAL_SERVER_ERROR);
   });
 
-  it('singleton controller works', async () => {
+  it('context-scoped controller works', async () => {
     await testAgent.get('/api/hello2').expect(200).expect('Hello World!');
   });
 
-  it('singleton controller should parsed post', async () => {
+  it('context-scoped controller should parsed post', async () => {
     await testAgent.post('/api/body2').send({ one: 1 }).expect(200).expect({ one: 1 });
   });
 
@@ -50,7 +50,7 @@ describe('Integration tests for HelloWorldController', () => {
     await testAgent.post('/api/body2').send({ one: 1, two: 2 }).expect(Status.PAYLOAD_TO_LARGE);
   });
 
-  it('singleton controller should throw an error', async () => {
+  it('context-scoped controller should throw an error', async () => {
     await testAgent.get('/api/throw-error2').expect(Status.INTERNAL_SERVER_ERROR);
   });
 });

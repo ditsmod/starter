@@ -5,7 +5,7 @@ import { route } from '@ditsmod/routing';
 import { SomeService } from './some.service.js';
 
 @controller()
-export class DefaultController {
+export class InjScopedController {
   @route('GET', 'hello')
   tellHello(res: Res, someService: SomeService) {
     const msg = someService.getMsg();
